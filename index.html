@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ECC Cricket Portal</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--r:#c1121f;--dr:#780000;--g:#ffd166;--bg:#0f0f0f;--c:#181818;--t:#fff}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Noto Sans Bengali',sans-serif}
+body{background:var(--bg);color:var(--t)}
+.hero{min-height:100vh;text-align:center;padding:40px 20px;display:flex;align-items:center;justify-content:center;background:linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.8)),url('https://raw.githubusercontent.com/rnipa/Cricket/72103d1cc6088d61a4fa0e9761ca3404d0b7c11d/file_000000006364720bb3f410856ba8a05c.png') center/cover}
+.logo{width:160px;background:#fff;border-radius:50%;padding:8px;border:4px solid var(--g)}
+h1{color:var(--g);margin:15px 0}
+.btn{display:inline-block;background:linear-gradient(45deg,var(--r),var(--dr));padding:14px 28px;border-radius:40px;color:#fff;text-decoration:none;margin-top:20px}
+.timer{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:20px 0}
+.box,.card,.notice,.info{background:var(--c);padding:18px;border-radius:16px}
+.box{min-width:90px}
+.wrap{max-width:1200px;margin:auto;padding:40px 20px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+.card{text-decoration:none;color:#fff;text-align:center;border:1px solid #333}
+.card:hover{transform:translateY(-5px)}
+.section-title{text-align:center;color:var(--g);margin:30px 0}
+.notice{margin-top:25px}
+footer{text-align:center;padding:30px;background:#050505}
+</style>
+</head>
+<body>
+<section class="hero"><div>
+<img class="logo" src="https://raw.githubusercontent.com/rnipa/Cricket/1d01f2192180d44d8c31cfe3a31c7467d3e79fa9/EMERGING%20CRICKET%20CLUB.png">
+<h1>EMERGING CRICKET CLUB (ECC)</h1>
+<h2>টি-টেন ক্রিকেট টুর্নামেন্ট ২০২৬</h2>
+<p>মাদক ও জুয়ামুক্ত তরুণ সমাজ গড়ি, সুন্দর ও সুস্থ সমাজ গড়ি।</p>
+<div class="timer">
+<div class="box"><div id="d">0</div>দিন</div>
+<div class="box"><div id="h">0</div>ঘন্টা</div>
+<div class="box"><div id="m">0</div>মিনিট</div>
+<div class="box"><div id="s">0</div>সেকেন্ড</div>
+</div>
+<a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSeTy92Xdag2wPAFTcFxphYfEhhSxcw9axhMSVB012gWfLiOEg/viewform">🏏 টিম রেজিস্ট্রেশন</a>
+</div></section>
+
+<div class="wrap">
+<h2 class="section-title">দ্রুত সেবা</h2>
+<div class="grid">
+<a class="card" href="#">🏆<br>টুর্নামেন্ট তথ্য</a>
+<a class="card" href="#">📜<br>নিয়মাবলি</a>
+<a class="card" href="#">📅<br>ম্যাচ সূচি</a>
+<a class="card" href="#">👥<br>অংশগ্রহণকারী দল</a>
+<a class="card" href="#">📊<br>পয়েন্ট টেবিল</a>
+<a class="card" href="#">🖼️<br>গ্যালারি</a>
+<a class="card" href="#">📞<br>যোগাযোগ</a>
+<a class="card" href="https://docs.google.com/forms/d/e/1FAIpQLSeTy92Xdag2wPAFTcFxphYfEhhSxcw9axhMSVB012gWfLiOEg/viewform">📝<br>রেজিস্ট্রেশন</a>
+</div>
+
+<h2 class="section-title">প্রাইজমানি</h2>
+<div class="grid">
+<div class="info">🏆 চ্যাম্পিয়ন দল<br><b>১০,০০০ টাকা</b></div>
+<div class="info">🥈 রানার্স-আপ দল<br><b>৬,০০০ টাকা</b></div>
+</div>
+
+<div class="notice">
+<h3>📢 নোটিশ বোর্ড</h3>
+<p>রেজিস্ট্রেশন ফি: ৩,০০০ টাকা</p>
+<p>শেষ তারিখ: ২৭ জুন ২০২৬</p>
+<p>টুর্নামেন্ট: ০৩ জুলাই ২০২৬</p>
+<p>ফজলে রাব্বি: ০১৮৮০-৮২৯৬২৬</p>
+<p>আবু বাকার: ০১৯০৯-০৬৩১১৩</p>
+</div>
+</div>
+
+<footer>© 2026 Emerging Cricket Club (ECC)</footer>
+<script>
+const t=new Date("2026-06-27T23:59:59").getTime();
+setInterval(()=>{let x=t-Date.now();if(x<0)x=0;
+d.innerHTML=Math.floor(x/86400000);
+h.innerHTML=Math.floor(x%86400000/3600000);
+m.innerHTML=Math.floor(x%3600000/60000);
+s.innerHTML=Math.floor(x%60000/1000);
+},1000);
+</script>
+</body></html>
