@@ -1,29 +1,200 @@
 <!DOCTYPE html>
+
 <html lang="bn">
 <head>
 <meta charset="UTF-8">
-<title>Coming Soon</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ম্যাচ সূচি | ECC T10 Tournament 2026</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
 <style>
+
+:root{
+--primary:#c1121f;
+--secondary:#780000;
+--gold:#ffd166;
+--bg:#0f0f0f;
+--card:#181818;
+--text:#ffffff;
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Noto Sans Bengali',sans-serif;
+}
+
 body{
-font-family:Arial,sans-serif;
-background:#0f0f0f;
-color:white;
-display:flex;
-justify-content:center;
-align-items:center;
-height:100vh;
+background:var(--bg);
+color:var(--text);
+}
+
+.header{
+background:linear-gradient(135deg,#780000,#0f0f0f);
+padding:30px 20px;
 text-align:center;
 }
-a{
+
+.logo{
+width:120px;
+background:#fff;
+padding:8px;
+border-radius:50%;
+border:3px solid var(--gold);
+}
+
+.header h1{
+margin-top:15px;
+color:var(--gold);
+}
+
+.container{
+max-width:1100px;
+margin:auto;
+padding:40px 20px;
+}
+
+.page-title{
+text-align:center;
+font-size:36px;
+color:var(--gold);
+margin-bottom:30px;
+}
+
+.notice{
+background:var(--card);
+padding:25px;
+border-radius:18px;
+border-left:5px solid var(--primary);
+margin-bottom:30px;
+text-align:center;
+line-height:2;
+}
+
+.fixture-card{
+background:var(--card);
+padding:25px;
+border-radius:18px;
+margin-bottom:20px;
+text-align:center;
+border-left:5px solid var(--gold);
+}
+
+.fixture-card h3{
+color:var(--gold);
+margin-bottom:15px;
+}
+
+.coming{
+font-size:22px;
+font-weight:bold;
 color:#ffd166;
 }
+
+.btn-area{
+text-align:center;
+margin-top:40px;
+}
+
+.btn{
+display:inline-block;
+padding:15px 35px;
+background:linear-gradient(135deg,var(--primary),var(--secondary));
+color:#fff;
+text-decoration:none;
+border-radius:50px;
+font-weight:bold;
+margin:10px;
+}
+
+.footer{
+margin-top:50px;
+padding:25px;
+text-align:center;
+background:#050505;
+}
+
 </style>
+
 </head>
+
 <body>
-<div>
-<h1>🏏 Coming Soon</h1>
-<p>এই পেইজের কাজ চলমান রয়েছে।</p>
-<p><a href="index.html">হোমপেজে ফিরে যান</a></p>
+
+<div class="header">
+
+<img class="logo"
+src="https://raw.githubusercontent.com/rnipa/Cricket/1d01f2192180d44d8c31cfe3a31c7467d3e79fa9/EMERGING%20CRICKET%20CLUB.png"
+alt="ECC Logo">
+
+<h1>EMERGING CRICKET CLUB (ECC)</h1>
+
 </div>
+
+<div class="container">
+
+<h2 class="page-title">📅 ম্যাচ সূচি</h2>
+
+<div class="notice">
+
+<p>🏏 টি-টেন ক্রিকেট টুর্নামেন্ট ২০২৬</p>
+
+<p>📍 ভেন্যু: ECC মাঠ, মাধখলা, শ্রীপুর, গাজীপুর</p>
+
+<p>📅 টুর্নামেন্ট শুরু: ০৩ জুলাই, ২০২৬</p>
+
+</div>
+
+<div class="fixture-card">
+
+<h3>🏆 ম্যাচ সূচি</h3>
+
+<p class="coming">
+ম্যাচ সূচি খুব শীঘ্রই প্রকাশ করা হবে
+</p>
+
+<p style="margin-top:15px;">
+টুর্নামেন্ট পরিচালনা কমিটি কর্তৃক সূচি প্রকাশের সাথে সাথে এই পেইজে আপডেট করা হবে।
+</p>
+
+</div>
+
+<div class="fixture-card">
+
+<h3>📢 গুরুত্বপূর্ণ ঘোষণা</h3>
+
+<p>
+সকল দলকে নির্ধারিত সময়ের মধ্যে রেজিস্ট্রেশন সম্পন্ন করার জন্য অনুরোধ করা হচ্ছে।
+</p>
+
+</div>
+
+<div class="btn-area">
+
+<a href="tournament.html" class="btn">
+🏆 টুর্নামেন্ট তথ্য
+</a>
+
+<a href="rules.html" class="btn">
+📜 নিয়মাবলি
+</a>
+
+<a href="index.html" class="btn">
+🏠 হোমপেজ
+</a>
+
+</div>
+
+</div>
+
+<div class="footer">
+
+<p>© ২০২৬ EMERGING CRICKET CLUB (ECC)</p>
+
+<p>All Rights Reserved</p>
+
+</div>
+
 </body>
 </html>
