@@ -1,29 +1,256 @@
 <!DOCTYPE html>
+
 <html lang="bn">
 <head>
 <meta charset="UTF-8">
-<title>Coming Soon</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>টুর্নামেন্ট তথ্য | ECC T10 Tournament 2026</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
 <style>
+
+:root{
+--primary:#c1121f;
+--secondary:#780000;
+--gold:#ffd166;
+--bg:#0f0f0f;
+--card:#181818;
+--text:#ffffff;
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Noto Sans Bengali',sans-serif;
+}
+
 body{
-font-family:Arial,sans-serif;
-background:#0f0f0f;
-color:white;
-display:flex;
-justify-content:center;
-align-items:center;
-height:100vh;
+background:var(--bg);
+color:var(--text);
+}
+
+.header{
+background:linear-gradient(135deg,#780000,#0f0f0f);
+padding:30px 20px;
 text-align:center;
 }
-a{
-color:#ffd166;
+
+.logo{
+width:120px;
+background:#fff;
+padding:8px;
+border-radius:50%;
+border:3px solid var(--gold);
 }
+
+.header h1{
+margin-top:15px;
+color:var(--gold);
+}
+
+.container{
+max-width:1100px;
+margin:auto;
+padding:40px 20px;
+}
+
+.page-title{
+text-align:center;
+font-size:36px;
+color:var(--gold);
+margin-bottom:15px;
+}
+
+.subtitle{
+text-align:center;
+opacity:.9;
+line-height:1.8;
+max-width:800px;
+margin:auto;
+margin-bottom:40px;
+}
+
+.card{
+background:var(--card);
+padding:25px;
+margin-bottom:20px;
+border-radius:18px;
+border-left:5px solid var(--primary);
+}
+
+.card h2{
+color:var(--gold);
+margin-bottom:15px;
+}
+
+.card p{
+line-height:1.9;
+}
+
+.prize-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:20px;
+margin-top:20px;
+}
+
+.prize-card{
+background:#202020;
+padding:25px;
+border-radius:16px;
+text-align:center;
+}
+
+.prize-card h3{
+color:var(--gold);
+margin-bottom:10px;
+}
+
+.prize-card h4{
+font-size:28px;
+}
+
+.award-list li{
+margin:12px 0;
+line-height:1.8;
+}
+
+.btn-area{
+text-align:center;
+margin-top:40px;
+}
+
+.btn{
+display:inline-block;
+padding:15px 35px;
+background:linear-gradient(135deg,var(--primary),var(--secondary));
+color:#fff;
+text-decoration:none;
+border-radius:50px;
+font-weight:bold;
+margin:10px;
+}
+
+.footer{
+margin-top:50px;
+padding:25px;
+text-align:center;
+background:#050505;
+}
+
 </style>
+
 </head>
+
 <body>
-<div>
-<h1>🏏 Coming Soon</h1>
-<p>এই পেইজের কাজ চলমান রয়েছে।</p>
-<p><a href="index.html">হোমপেজে ফিরে যান</a></p>
+
+<div class="header">
+
+<img class="logo"
+src="https://raw.githubusercontent.com/rnipa/Cricket/1d01f2192180d44d8c31cfe3a31c7467d3e79fa9/EMERGING%20CRICKET%20CLUB.png"
+alt="ECC Logo">
+
+<h1>EMERGING CRICKET CLUB (ECC)</h1>
+
 </div>
+
+<div class="container">
+
+<h2 class="page-title">🏏 টি-টেন ক্রিকেট টুর্নামেন্ট ২০২৬</h2>
+
+<p class="subtitle">
+মাদক ও জুয়ামুক্ত তরুণ সমাজ গড়ি, সুন্দর ও সুস্থ সমাজ গড়ি।
+<br><br>
+EMERGING CRICKET CLUB (ECC) আয়োজিত টি-টেন ক্রিকেট টুর্নামেন্ট ২০২৬-এ সকল ক্রিকেটপ্রেমী খেলোয়াড় ও দর্শকদের স্বাগতম।
+</p>
+
+<div class="card">
+<h2>📅 টুর্নামেন্টের তারিখ</h2>
+<p>০৩ জুলাই, ২০২৬ খ্রিস্টাব্দ</p>
+</div>
+
+<div class="card">
+<h2>📍 ভেন্যু</h2>
+<p>
+Emerging Cricket Club (ECC) এর মাঠ<br>
+পদ্মা গেট সংলগ্ন, মাধখলা, শ্রীপুর, গাজীপুর।
+</p>
+</div>
+
+<div class="card">
+
+<h2>🏆 প্রাইজমানি</h2>
+
+<div class="prize-grid">
+
+<div class="prize-card">
+<h3>🏆 চ্যাম্পিয়ন দল</h3>
+<h4>১০,০০০ টাকা</h4>
+</div>
+
+<div class="prize-card">
+<h3>🥈 রানার্স-আপ দল</h3>
+<h4>৬,০০০ টাকা</h4>
+</div>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<h2>🎖️ বিশেষ পুরস্কারসমূহ</h2>
+
+<ul class="award-list">
+
+<li>🏅 প্রতি ম্যাচের ম্যাচসেরা খেলোয়াড়</li>
+
+<li>🏅 ফাইনাল ম্যাচের ম্যাচসেরা খেলোয়াড়</li>
+
+<li>🏅 টুর্নামেন্টসেরা খেলোয়াড়</li>
+
+</ul>
+
+</div>
+
+<div class="card">
+
+<h2>📝 অংশগ্রহণ</h2>
+
+<p>
+টুর্নামেন্টে অংশগ্রহণকারী প্রতিটি দলকে নির্ধারিত সময়ের মধ্যে রেজিস্ট্রেশন সম্পন্ন করতে হবে।
+খেলাটি নিলাম পদ্ধতিতে অনুষ্ঠিত হবে এবং প্রতিটি দলকে ১৫ জন খেলোয়াড় অন্তর্ভুক্ত করতে হবে।
+</p>
+
+</div>
+
+<div class="btn-area">
+
+<a href="https://docs.google.com/forms/d/e/1FAIpQLSeTy92Xdag2wPAFTcFxphYfEhhSxcw9axhMSVB012gWfLiOEg/viewform"
+class="btn">
+🏏 টিম রেজিস্ট্রেশন </a>
+
+<a href="rules.html"
+class="btn">
+📜 নিয়মাবলি দেখুন </a>
+
+<a href="index.html"
+class="btn">
+🏠 হোমপেজ </a>
+
+</div>
+
+</div>
+
+<div class="footer">
+
+<p>© ২০২৬ EMERGING CRICKET CLUB (ECC)</p>
+
+<p>All Rights Reserved</p>
+
+</div>
+
 </body>
 </html>
