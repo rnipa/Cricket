@@ -1,29 +1,244 @@
 <!DOCTYPE html>
+
 <html lang="bn">
 <head>
 <meta charset="UTF-8">
-<title>Coming Soon</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>অংশগ্রহণকারী দল | ECC T10 Tournament 2026</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
 <style>
+
+:root{
+--primary:#c1121f;
+--secondary:#780000;
+--gold:#ffd166;
+--bg:#0f0f0f;
+--card:#181818;
+--text:#ffffff;
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Noto Sans Bengali',sans-serif;
+}
+
 body{
-font-family:Arial,sans-serif;
-background:#0f0f0f;
-color:white;
-display:flex;
-justify-content:center;
-align-items:center;
-height:100vh;
+background:var(--bg);
+color:var(--text);
+}
+
+.header{
+background:linear-gradient(135deg,#780000,#0f0f0f);
+padding:30px 20px;
 text-align:center;
 }
-a{
-color:#ffd166;
+
+.logo{
+width:120px;
+background:#fff;
+padding:8px;
+border-radius:50%;
+border:3px solid var(--gold);
 }
+
+.header h1{
+margin-top:15px;
+color:var(--gold);
+}
+
+.container{
+max-width:1200px;
+margin:auto;
+padding:40px 20px;
+}
+
+.page-title{
+text-align:center;
+font-size:36px;
+color:var(--gold);
+margin-bottom:20px;
+}
+
+.subtitle{
+text-align:center;
+margin-bottom:40px;
+opacity:.85;
+}
+
+.team-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+
+.team-card{
+background:var(--card);
+padding:25px;
+border-radius:18px;
+text-align:center;
+border-left:5px solid var(--primary);
+transition:.3s;
+}
+
+.team-card:hover{
+transform:translateY(-5px);
+}
+
+.team-icon{
+font-size:50px;
+margin-bottom:15px;
+}
+
+.team-card h3{
+color:var(--gold);
+margin-bottom:10px;
+}
+
+.status{
+display:inline-block;
+padding:8px 15px;
+border-radius:30px;
+background:#333;
+margin-top:10px;
+}
+
+.notice{
+margin-top:40px;
+background:var(--card);
+padding:25px;
+border-radius:18px;
+text-align:center;
+border-left:5px solid var(--gold);
+line-height:2;
+}
+
+.btn-area{
+text-align:center;
+margin-top:40px;
+}
+
+.btn{
+display:inline-block;
+padding:15px 35px;
+background:linear-gradient(135deg,var(--primary),var(--secondary));
+color:#fff;
+text-decoration:none;
+border-radius:50px;
+font-weight:bold;
+margin:10px;
+}
+
+.footer{
+margin-top:50px;
+padding:25px;
+text-align:center;
+background:#050505;
+}
+
 </style>
+
 </head>
+
 <body>
-<div>
-<h1>🏏 Coming Soon</h1>
-<p>এই পেইজের কাজ চলমান রয়েছে।</p>
-<p><a href="index.html">হোমপেজে ফিরে যান</a></p>
+
+<div class="header">
+
+<img class="logo"
+src="https://raw.githubusercontent.com/rnipa/Cricket/1d01f2192180d44d8c31cfe3a31c7467d3e79fa9/EMERGING%20CRICKET%20CLUB.png"
+alt="ECC Logo">
+
+<h1>EMERGING CRICKET CLUB (ECC)</h1>
+
 </div>
+
+<div class="container">
+
+<h2 class="page-title">👥 অংশগ্রহণকারী দল</h2>
+
+<p class="subtitle">
+রেজিস্ট্রেশন সম্পন্ন হওয়ার পর অংশগ্রহণকারী দলসমূহ এখানে প্রকাশ করা হবে।
+</p>
+
+<div class="team-grid">
+
+<div class="team-card">
+<div class="team-icon">🏏</div>
+<h3>Team Slot 01</h3>
+<div class="status">নিবন্ধন চলমান</div>
+</div>
+
+<div class="team-card">
+<div class="team-icon">🏏</div>
+<h3>Team Slot 02</h3>
+<div class="status">নিবন্ধন চলমান</div>
+</div>
+
+<div class="team-card">
+<div class="team-icon">🏏</div>
+<h3>Team Slot 03</h3>
+<div class="status">নিবন্ধন চলমান</div>
+</div>
+
+<div class="team-card">
+<div class="team-icon">🏏</div>
+<h3>Team Slot 04</h3>
+<div class="status">নিবন্ধন চলমান</div>
+</div>
+
+<div class="team-card">
+<div class="team-icon">🏏</div>
+<h3>Team Slot 05</h3>
+<div class="status">নিবন্ধন চলমান</div>
+</div>
+
+<div class="team-card">
+<div class="team-icon">🏏</div>
+<h3>Team Slot 06</h3>
+<div class="status">নিবন্ধন চলমান</div>
+</div>
+
+</div>
+
+<div class="notice">
+
+<h3 style="color:#ffd166;">📢 গুরুত্বপূর্ণ তথ্য</h3>
+
+<p>
+টুর্নামেন্টে অংশগ্রহণকারী সকল দল রেজিস্ট্রেশন সম্পন্ন করার পর
+এই পেইজে অফিসিয়াল টিম তালিকা প্রকাশ করা হবে।
+</p>
+
+</div>
+
+<div class="btn-area">
+
+<a href="fixture.html" class="btn">
+📅 ম্যাচ সূচি
+</a>
+
+<a href="contact.html" class="btn">
+📞 যোগাযোগ
+</a>
+
+<a href="index.html" class="btn">
+🏠 হোমপেজ
+</a>
+
+</div>
+
+</div>
+
+<div class="footer">
+
+<p>© ২০২৬ EMERGING CRICKET CLUB (ECC)</p>
+
+<p>All Rights Reserved</p>
+
+</div>
+
 </body>
 </html>
