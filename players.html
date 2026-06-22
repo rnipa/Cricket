@@ -1,34 +1,90 @@
 <!DOCTYPE html>
-<html lang="bn"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>ECC Players</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;700&display=swap" rel="stylesheet">
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ECC Registered Players</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
 <style>
-body{font-family:'Noto Sans Bengali',sans-serif;background:#0f0f0f;color:#fff;margin:0}
-.header{text-align:center;padding:30px;background:#780000}.logo{width:100px}
-.players-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px;padding:20px}
-.player-card{background:#181818;border-radius:16px;overflow:hidden}
-.player-card img{width:100%;height:220px;object-fit:cover}
-.player-body{padding:15px}.player-name{color:#ffd166;font-size:22px;font-weight:bold}
-</style></head><body>
-<div class="header"><h1>🏏 নিবন্ধিত খেলোয়াড়</h1><h2 id="playerCount">0</h2></div>
-<div style="padding:20px"><input id="searchInput" placeholder="খেলোয়াড় খুঁজুন..." style="width:100%;padding:12px"></div>
-<div id="playersContainer" class="players-grid"></div>
+body{margin:0;background:#0f0f0f;color:#fff;font-family:'Noto Sans Bengali',sans-serif}
+header{background:linear-gradient(135deg,#780000,#1a1a1a);padding:25px;text-align:center}
+h1{color:#ffd166}
+.top{max-width:1200px;margin:auto;padding:20px}
+#search{width:100%;padding:14px;border-radius:10px;border:none}
+.count{margin:15px 0;font-size:20px;color:#ffd166}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px}
+.card{background:#181818;border-radius:18px;overflow:hidden}
+.card img{width:100%;height:230px;object-fit:cover}
+.info{padding:15px}
+.name{font-size:22px;font-weight:bold;color:#ffd166}
+.line{margin:6px 0}
+</style>
+</head>
+<body>
+<header><h1>🏏 ECC নিবন্ধিত খেলোয়াড়</h1></header>
+
+<div class="top">
+<input id="search" placeholder="খেলোয়াড় খুঁজুন...">
+<div class="count">মোট খেলোয়াড়: <span id="count">0</span></div>
+<div id="grid" class="grid"></div>
+</div>
+
 <script>
 const csvUrl="https://docs.google.com/spreadsheets/d/e/2PACX-1vQcFJVhBEu70fwcoRZ3Bf7cqsJPAqcJDKErwenAKlDkU4HRNO6Ch1dR-Zb60t_73pHS5jGlNbE4MwVY/pub?output=csv";
-const defaultAvatar="https://cdn-icons-png.flaticon.com/512/147/147142.png";
-let allPlayers=[];
-function card(p){return `<div class='player-card'><img src='${defaultAvatar}'><div class='player-body'><div class='player-name'>${p.name}</div><div>🎂 ${p.age}</div><div>📍 ${p.address}</div><div>🏏 ${p.role}</div><div>✋ ${p.batting}</div><div>🎯 ${p.bowling}</div><div>🏆 ${p.experience}</div><div>🏟️ ${p.tournament}</div><div>⭐ ${p.achievement}</div></div></div>`}
-function render(arr){document.getElementById('playersContainer').innerHTML=arr.map(card).join('');}
-Papa.parse(csvUrl,{download:true,header:true,skipEmptyLines:true,complete:r=>{allPlayers=r.data;document.getElementById('playerCount').innerText=allPlayers.length;render(allPlayers.map(x=>({
-name:x["খেলোয়াড়ের পূর্ণ নাম"]||"",
-age:x["বর্তমান বয়স"]||"",
-address:x["বর্তমান ঠিকানা"]||"",
-role:x["আপনার ক্রিকেট খেলার প্রধান ভূমিকা কী?"]||"",
-batting:x["ব্যাটিং স্টাইল"]||"",
-bowling:x["বোলিং স্টাইল"]||"",
-experience:x["পূর্বে কোনো টুর্নামেন্ট খেলেছেন?"]||"",
-tournament:x["পূর্বে খেলা টুর্নামেন্টের নাম"]||"",
-achievement:x["আপনার সবচেয়ে বড় ক্রিকেট অর্জন"]||""
-})));}});
-</script></body></html>
+const avatar="https://cdn-icons-png.flaticon.com/512/147/147142.png";
+let players=[];
+
+function getVal(row,keyWord){
+ const k=Object.keys(row).find(x=>x.includes(keyWord));
+ return k?row[k]:"";
+}
+
+function card(p){
+return `<div class="card">
+<img src="${avatar}" onerror="this.src='${avatar}'">
+<div class="info">
+<div class="name">${p.name}</div>
+<div class="line">🎂 বয়স: ${p.age}</div>
+<div class="line">📍 ${p.address}</div>
+<div class="line">🏏 ${p.role}</div>
+<div class="line">✋ ${p.batting}</div>
+<div class="line">🎯 ${p.bowling}</div>
+<div class="line">🏆 ${p.experience}</div>
+<div class="line">🏟️ ${p.tournament}</div>
+<div class="line">⭐ ${p.achievement}</div>
+</div></div>`;
+}
+
+function render(arr){
+document.getElementById("count").innerText=arr.length;
+document.getElementById("grid").innerHTML=arr.map(card).join("");
+}
+
+Papa.parse(csvUrl,{
+download:true,
+header:true,
+skipEmptyLines:true,
+complete:(r)=>{
+players=r.data.map(x=>({
+name:getVal(x,"পূর্ণ নাম"),
+age:getVal(x,"বর্তমান বয়স"),
+address:getVal(x,"বর্তমান ঠিকানা"),
+role:getVal(x,"প্রধান ভূমিকা"),
+batting:getVal(x,"ব্যাটিং স্টাইল"),
+bowling:getVal(x,"বোলিং স্টাইল"),
+experience:getVal(x,"টুর্নামেন্ট খেলেছেন"),
+tournament:getVal(x,"টুর্নামেন্টের নাম"),
+achievement:getVal(x,"ক্রিকেট অর্জন")
+}));
+render(players);
+}
+});
+
+document.getElementById("search").addEventListener("input",e=>{
+const q=e.target.value.toLowerCase();
+render(players.filter(p=>p.name.toLowerCase().includes(q)));
+});
+</script>
+</body>
+</html>
