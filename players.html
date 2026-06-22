@@ -1,214 +1,34 @@
 <!DOCTYPE html>
-
-<html lang="bn">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>নিবন্ধিত খেলোয়াড় | ECC</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;700&display=swap" rel="stylesheet">
-
+<html lang="bn"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ECC Players</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
 <style>
-body{
-background:#0f0f0f;
-color:#fff;
-font-family:'Noto Sans Bengali',sans-serif;
-margin:0;
-padding:0;
-}
-
-.header{
-text-align:center;
-padding:30px;
-background:linear-gradient(135deg,#780000,#111);
-}
-
-.header h1{
-color:#ffd166;
-}
-
-.container{
-max-width:1200px;
-margin:auto;
-padding:20px;
-}
-
-.counter{
-text-align:center;
-font-size:22px;
-margin:20px 0;
-color:#ffd166;
-font-weight:bold;
-}
-
-.search-box{
-text-align:center;
-margin-bottom:25px;
-}
-
-.search-box input{
-width:100%;
-max-width:500px;
-padding:12px;
-border:none;
-border-radius:10px;
-font-size:16px;
-}
-
-.players-grid{
-display:grid;
-grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
-gap:20px;
-}
-
-.player-card{
-background:#1a1a1a;
-border-radius:15px;
-overflow:hidden;
-border:1px solid #333;
-}
-
-.player-img{
-height:220px;
-background:url('https://i.imgur.com/ZK7fK8T.png') center/cover;
-}
-
-.player-content{
-padding:15px;
-}
-
-.player-content h3{
-margin:0 0 10px;
-color:#ffd166;
-}
-
-.player-content p{
-margin:6px 0;
-}
-
-.loading{
-text-align:center;
-padding:40px;
-font-size:20px;
-}
-
-</style>
-
-</head>
-<body>
-
-<div class="header">
-<h1>🏏 নিবন্ধিত খেলোয়াড়</h1>
-</div>
-
-<div class="container">
-
-<div class="counter" id="playerCount">
-লোড হচ্ছে...
-</div>
-
-<div class="search-box">
-<input type="text" id="searchInput" placeholder="খেলোয়াড় খুঁজুন...">
-</div>
-
-<div id="players" class="players-grid">
-<div class="loading">ডাটা লোড হচ্ছে...</div>
-</div>
-
-</div>
-
+body{font-family:'Noto Sans Bengali',sans-serif;background:#0f0f0f;color:#fff;margin:0}
+.header{text-align:center;padding:30px;background:#780000}.logo{width:100px}
+.players-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px;padding:20px}
+.player-card{background:#181818;border-radius:16px;overflow:hidden}
+.player-card img{width:100%;height:220px;object-fit:cover}
+.player-body{padding:15px}.player-name{color:#ffd166;font-size:22px;font-weight:bold}
+</style></head><body>
+<div class="header"><h1>🏏 নিবন্ধিত খেলোয়াড়</h1><h2 id="playerCount">0</h2></div>
+<div style="padding:20px"><input id="searchInput" placeholder="খেলোয়াড় খুঁজুন..." style="width:100%;padding:12px"></div>
+<div id="playersContainer" class="players-grid"></div>
 <script>
-
-const CSV_URL =
-"https://docs.google.com/spreadsheets/d/e/2PACX-1vQcFJVhBEu70fwcoRZ3Bf7cqsJPAqcJDKErwenAKlDkU4HRNO6Ch1dR-Zb60t_73pHS5jGlNbE4MwVY/pub?output=csv";
-
+const csvUrl="https://docs.google.com/spreadsheets/d/e/2PACX-1vQcFJVhBEu70fwcoRZ3Bf7cqsJPAqcJDKErwenAKlDkU4HRNO6Ch1dR-Zb60t_73pHS5jGlNbE4MwVY/pub?output=csv";
+const defaultAvatar="https://cdn-icons-png.flaticon.com/512/147/147142.png";
 let allPlayers=[];
-
-fetch(CSV_URL)
-.then(res=>res.text())
-.then(csv=>{
-
-const rows=csv.split("\n").map(r=>r.split(","));
-
-const headers=rows[0];
-
-function getIndex(keyword){
-return headers.findIndex(h=>h.includes(keyword));
-}
-
-const nameIndex=getIndex("পূর্ণ নাম");
-const ageIndex=getIndex("বয়স");
-const roleIndex=getIndex("ভূমিকা");
-const batIndex=getIndex("ব্যাটিং");
-const bowlIndex=getIndex("বোলিং");
-const expIndex=getIndex("টুর্নামেন্ট");
-
-allPlayers=rows.slice(1)
-.filter(r=>r.length>3)
-.map(r=>({
-
-name:r[nameIndex] || "",
-age:r[ageIndex] || "",
-role:r[roleIndex] || "",
-bat:r[batIndex] || "",
-bowl:r[bowlIndex] || "",
-exp:r[expIndex] || ""
-
-}));
-
-renderPlayers(allPlayers);
-
-});
-
-function renderPlayers(players){
-
-document.getElementById("playerCount").innerHTML=
-"🏏 মোট নিবন্ধিত খেলোয়াড়: "+players.length+" জন";
-
-const container=document.getElementById("players");
-
-container.innerHTML=players.map(player=>`
-
-<div class="player-card">
-
-<div class="player-img"></div>
-
-<div class="player-content">
-
-<h3>${player.name}</h3>
-
-<p>🎂 বয়স: ${player.age}</p>
-
-<p>🏏 ভূমিকা: ${player.role}</p>
-
-<p>✋ ব্যাটিং: ${player.bat}</p>
-
-<p>🎯 বোলিং: ${player.bowl}</p>
-
-<p>🏆 অভিজ্ঞতা: ${player.exp}</p>
-
-</div>
-
-</div>
-
-`).join('');
-
-}
-
-document.getElementById("searchInput")
-.addEventListener("input",function(){
-
-const q=this.value.toLowerCase();
-
-const filtered=allPlayers.filter(p=>
-p.name.toLowerCase().includes(q)
-);
-
-renderPlayers(filtered);
-
-});
-
-</script>
-
-</body>
-</html>
+function card(p){return `<div class='player-card'><img src='${defaultAvatar}'><div class='player-body'><div class='player-name'>${p.name}</div><div>🎂 ${p.age}</div><div>📍 ${p.address}</div><div>🏏 ${p.role}</div><div>✋ ${p.batting}</div><div>🎯 ${p.bowling}</div><div>🏆 ${p.experience}</div><div>🏟️ ${p.tournament}</div><div>⭐ ${p.achievement}</div></div></div>`}
+function render(arr){document.getElementById('playersContainer').innerHTML=arr.map(card).join('');}
+Papa.parse(csvUrl,{download:true,header:true,skipEmptyLines:true,complete:r=>{allPlayers=r.data;document.getElementById('playerCount').innerText=allPlayers.length;render(allPlayers.map(x=>({
+name:x["খেলোয়াড়ের পূর্ণ নাম"]||"",
+age:x["বর্তমান বয়স"]||"",
+address:x["বর্তমান ঠিকানা"]||"",
+role:x["আপনার ক্রিকেট খেলার প্রধান ভূমিকা কী?"]||"",
+batting:x["ব্যাটিং স্টাইল"]||"",
+bowling:x["বোলিং স্টাইল"]||"",
+experience:x["পূর্বে কোনো টুর্নামেন্ট খেলেছেন?"]||"",
+tournament:x["পূর্বে খেলা টুর্নামেন্টের নাম"]||"",
+achievement:x["আপনার সবচেয়ে বড় ক্রিকেট অর্জন"]||""
+})));}});
+</script></body></html>
